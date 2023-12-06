@@ -1,0 +1,6 @@
+docker-compose exec web /bin/sh
+###enter a service terminal
+
+
+docker-compose run web python3 manage.py migrate
+to run a command in a service

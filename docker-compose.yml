@@ -26,8 +26,7 @@ services:
     volumes:
       - ./:/code
       - certbot:/etc/letsencrypt
-      - certbot:/var/www/certbot
-      - certbot:/var/www/letsencrypt  
+      - certbot:/var/www/certbot      
     depends_on:
       - web
 
@@ -35,8 +34,7 @@ services:
     image: certbot/certbot
     volumes:
       - certbot:/etc/letsencrypt
-      - certbot:/var/www/certbot
-      - certbot:/var/www/letsencrypt  
+      - certbot:/var/www/certbot      
     depends_on:
       - web
     command: certonly --webroot -w /var/www/certbot --force-renewal --email email@gmail.com -d mydomain.com --agree-tos

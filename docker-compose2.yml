@@ -12,7 +12,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./:/code
+      - static:/code/static_cdn
     # depends_on:
     #   - db
     environment:
@@ -21,25 +21,18 @@ services:
 
   nginx:
     build: ./nginx
+    # volumes: 
+    #   - ./certbot/conf:/etc/letsencrypt/:rw
+    #   - ./certbot/www:/var/www/certbot/:rw
+    #   - ./certbot/logs:/var/log/letsencrypt/:rw
     ports:
       - "80:80"
       - "443:443"
     restart: always
     volumes:
-      - ./:/code
-      - certbot:/etc/letsencrypt
-      - certbot:/var/www/certbot
+      - static:/code/static_cdn
     depends_on:
       - web
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot:/etc/letsencrypt
-      - certbot:/var/www/certbot
-    depends_on:
-      - web
-    command: certbot certonly --webroot -w /var/www/certbot -d example.com
 
   # # PostgreSQL database
   # db:
@@ -55,4 +48,3 @@ services:
 volumes:
   # postgres_data:
   static:
-  certbot:

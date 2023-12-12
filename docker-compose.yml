@@ -29,6 +29,7 @@ services:
       - ./:/code
       - certbot:/etc/letsencrypt
       - certbot:/var/www/certbot
+      - certbot:/var/www/letsencrypt  
     depends_on:
       - web
 
@@ -37,10 +38,13 @@ services:
     volumes:
       - certbot:/etc/letsencrypt
       - certbot:/var/www/certbot
+      - certbot:/var/www/letsencrypt  
     depends_on:
       - web
+    command: certonly --webroot -w /var/www/certbot -d acmetrading.org
     command: certbot certonly --webroot -w /var/www/certbot -d acmetrading.org
-
+    
+#docker compose certbot certonly --webroot -w /var/www/certbot -d acmetrading.org
   # # PostgreSQL database
   # db:
   #   image: postgres:14.1-alpine

@@ -39,7 +39,7 @@ services:
       - certbot:/var/www/certbot
     depends_on:
       - web
-    command: certbot certonly --webroot -w /var/www/certbot -d example.com
+    command: certbot certonly --webroot -w /var/www/certbot -d acmetrading.org
 
   # # PostgreSQL database
   # db:

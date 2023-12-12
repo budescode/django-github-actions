@@ -1,6 +1,6 @@
-# Django Docker Project
+# Nginx Deployment with docker and docker compose
 
-This is a sample Django project that has been containerized using Docker. It provides a basic structure to help you get started with running your Django application in a Docker container.
+This is a sample Django project that has been containerized using Docker. This guide covers serving static files, handling media files , and enhancing security through SSL with Certbot.
 
 ## Prerequisites
 
@@ -16,25 +16,18 @@ Follow these steps to set up and run your Django project using Docker:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/budescode/django-docker.git
+   git clone https://github.com/budescode/django-docker-nginx-starter.git
    cd project
 
-2. Create an .env file in the project and paste the env variables for the databse:
+2. Create an .env file in the project and paste your env variables needed for the project   
+
+3. Replace mydomain.com with your actual domain names in both the docker-compose.yml and nginx/nginx.conf file. Make sure your domain name has been properly configured with your server, else it won't work.
+
+4. Build and start the Docker containers in detatch mode to run on background:
 
     ```bash
-    POSTGRES_DB=mydb
-    POSTGRES_USER=myuser
-    POSTGRES_PASSWORD=mypassword
-
-3. Build and start the Docker containers:
-
-    ```bash
-    docker-compose up --build
-
-4. Your Django application should now be running in a Docker container. You can access it in your web browser at    
-    ```bash
-    http://localhost:8000. 
-
+    docker-compose build
+    docker-compose up -d
 
 5. To stop the containers, run:
 

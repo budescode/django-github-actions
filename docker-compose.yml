@@ -13,10 +13,8 @@ services:
       - "8000:8000"
     volumes:
       - ./:/code
-    # depends_on:
-    #   - db
     environment:
-      - DEBUG=True  # Set your Django application environment variables here
+      - DEBUG=True  
     command: sh ./entrypoint.sh
 
   nginx:
@@ -41,22 +39,8 @@ services:
       - certbot:/var/www/letsencrypt  
     depends_on:
       - web
-    command: certonly --webroot -w /var/www/certbot -d acmetrading.org
-    command: certbot certonly --webroot -w /var/www/certbot -d acmetrading.org
-    
-#docker compose certbot certonly --webroot -w /var/www/certbot -d acmetrading.org
-  # # PostgreSQL database
-  # db:
-  #   image: postgres:14.1-alpine
-  #   container_name: my-postgres-db
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-  #   ports:
-  #         - "5432:5432"
-  #   env_file:
-  #     - .env # Include the environment file here
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email email@gmail.com -d mydomain.com --agree-tos
 
 volumes:
-  # postgres_data:
   static:
   certbot:

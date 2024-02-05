@@ -8,6 +8,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
     depends_on:
       - db
     ports:
@@ -24,10 +26,11 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
           - "5432:5432"
-    environment:
-      POSTGRES_DB: $${{ secrets.POSTGRES_DB }}
-      POSTGRES_USER: $${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: $${{ secrets.POSTGRES_PASSWORD }}
+    env_file:
+      - .env
+
+
+  
 
   nginx:
     build: ./nginx
@@ -49,9 +52,8 @@ services:
       - certbot:/var/www/certbot      
     depends_on:
       - web
-    environment:
-      CERTBOT_EMAIL: $${{ secrets.CERTBOT_EMAIL }}
-      CERTBOT_DOMAIN: $${{ secrets.CERTBOT_DOMAIN }}
+    env_file:
+      - .env
     command: certonly --webroot -w /var/www/certbot --force-renewal --email $CERTBOT_EMAIL -d $CERTBOT_DOMAIN --agree-tos
 
 volumes:

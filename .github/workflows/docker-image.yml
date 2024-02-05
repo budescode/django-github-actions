@@ -10,12 +10,22 @@ jobs:
 
   build:
     runs-on: self-hosted
-    env:
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+    # env:
+    #   POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+    #   POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+    #   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
     steps:
     - uses: actions/checkout@v3
+    - name: Generate .env file
+    uses: SpicyPizza/create-envfile@v1.3
+    with:
+      # 3rd party variables
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}      
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
+      CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
+      
     - name: Build the Docker image
       run: | 
           docker compose build

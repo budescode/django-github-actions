@@ -9,17 +9,16 @@ on:
 jobs:
 
   build:
-
     runs-on: self-hosted
-
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: | 
-          docker-compose build
-          docker-compose run --rm web python manage.py makemigrations     
-          docker-compose run --rm web python manage.py migrate 
-          docker-compose run --rm web python manage.py collectstatic --no-input
+          docker compose build
+          docker compose run --rm web python manage.py makemigrations     
+          docker compose run --rm web python manage.py migrate 
+          docker compose run --rm web python manage.py collectstatic --no-input
+
   test:
     runs-on: self-hosted
     needs:
@@ -27,7 +26,7 @@ jobs:
     steps:
       - name: Run tests
         run: |
-          docker-compose run --rm web python manage.py test
+          docker compose run --rm web python manage.py test
 
   deploy:
     runs-on: self-hosted
@@ -36,5 +35,5 @@ jobs:
     steps:
       - name: Deploy
         run: |
-          docker-compose up -d --force-recreate --remove-orphans
+          docker compose up -d --force-recreate --remove-orphans
           

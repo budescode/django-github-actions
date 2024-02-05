@@ -22,6 +22,9 @@ jobs:
           CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
           CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
           
+          file_name: .env
+          fail_on_empty: false
+
       - name: Build the Docker image
         run: | 
             docker compose build

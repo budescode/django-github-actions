@@ -16,11 +16,11 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           # 3rd party variables
-          envkey_POSTGRES_DB: ${{ vars.POSTGRES_DB }}
-          envkey_POSTGRES_USER: ${{ vars.POSTGRES_USER }}      
-          envkey_POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD }}
-          envkey_CERTBOT_EMAIL: ${{ vars.CERTBOT_EMAIL }}
-          envkey_CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
+          envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}      
+          envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          envkey_CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
+          envkey_CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
 
           file_name: .env
           fail_on_empty: false

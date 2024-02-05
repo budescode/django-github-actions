@@ -15,7 +15,7 @@ jobs:
       - name: Generate .env file
         uses: SpicyPizza/create-envfile@v1.3
         with:
-          # 3rd party variables.
+          # 3rd party variables
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}      
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}

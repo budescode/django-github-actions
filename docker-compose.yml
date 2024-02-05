@@ -29,9 +29,6 @@ services:
     env_file:
       - .env
 
-
-  
-
   nginx:
     build: ./nginx
     ports:
@@ -41,7 +38,9 @@ services:
     volumes:
       - ./:/code
       - certbot:/etc/letsencrypt
-      - certbot:/var/www/certbot      
+      - certbot:/var/www/certbot  
+    env_file:
+      - .env    
     depends_on:
       - web
 

@@ -50,9 +50,9 @@ services:
     depends_on:
       - web
     environment:
-      CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
-      CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email email@gmail.com -d mydomain.com --agree-tos
+      CERTBOT_EMAIL: $${{ secrets.CERTBOT_EMAIL }}
+      CERTBOT_DOMAIN: $${{ secrets.CERTBOT_DOMAIN }}
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email $CERTBOT_EMAIL -d $CERTBOT_DOMAIN --agree-tos
 
 volumes:
   static:

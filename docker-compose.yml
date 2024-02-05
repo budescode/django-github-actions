@@ -19,15 +19,15 @@ services:
     command: sh ./entrypoint.sh
 
   # PostgreSQL database
-  # db:
-  #   image: postgres:14.1-alpine
-  #   container_name: my-postgres-db
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-  #   ports:
-  #         - "5432:5432"
-  #   env_file:
-  #     - .env
+  db:
+    image: postgres:14.1-alpine
+    container_name: my-postgres-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+          - "5432:5432"
+    env_file:
+      - .env
 
   nginx:
     build: ./nginx

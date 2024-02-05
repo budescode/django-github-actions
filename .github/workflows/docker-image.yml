@@ -16,14 +16,14 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           # 3rd party variables.
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}      
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
-          CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
-          
+          envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}      
+          envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          envkey_CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
+          envkey_CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
+
           file_name: .env
-          fail_on_empty: false
+          fail_on_empty: true
 
       - name: Build the Docker image
         run: | 

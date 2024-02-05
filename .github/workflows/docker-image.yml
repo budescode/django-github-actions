@@ -23,7 +23,7 @@ jobs:
           envkey_CERTBOT_DOMAIN: ${{ vars.CERTBOT_DOMAIN }}
 
           file_name: .env
-          fail_on_empty: true
+          fail_on_empty: false
 
       - name: Build the Docker image
         run: | 

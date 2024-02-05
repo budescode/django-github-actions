@@ -9,7 +9,12 @@ root@ubuntu-s-1vcpu-1gb-nyc3-01:~/actions-runner# ./run.sh
 Must not run interactively with sudo
 Exiting runner...
 
+Add the following line to your ~/.bashrc or ~/.bash_profile file or ~/.zshrc file::
+
+
 export RUNNER_ALLOW_RUNASROOT="1"
+source ~/.bashrc
+
 
 RUNNER_ALLOW_RUNASROOT=true ./config.sh
 AHZZAUHKXSG7V2D5WUW6HDDFYCFJE

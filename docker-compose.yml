@@ -8,13 +8,29 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # env_file:
-    #   - .env
+    depends_on:
+      - db
     ports:
       - "8000:8000"
     volumes:
       - ./:/code
     command: sh ./entrypoint.sh
+
+  # PostgreSQL database
+  db:
+    image: postgres:14.1-alpine
+    container_name: my-postgres-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+          - "5432:5432"
+    environment:
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+
+
+  
 
   nginx:
     build: ./nginx
@@ -41,3 +57,4 @@ services:
 volumes:
   static:
   certbot:
+  postgres_data:

@@ -10,12 +10,9 @@ jobs:
 
   build:
     runs-on: self-hosted
-    # env:
-    #   POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-    #   POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-    #   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
     steps:
     - uses: actions/checkout@v3
+    
     - name: Generate .env file
     uses: SpicyPizza/create-envfile@v1.3
     with:

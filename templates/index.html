@@ -1,4 +1,26 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'style.css' %}">
-<h1>Hello world</h1>
+<h1>LIST OF BOOKS</h1>
 <p>This is a docker compose project with nginx</p>
+{% for i in qs %}
+<div>
+    <ul>
+        <img src="{{ i.image.url }}">
+        <li>Name: {{ i.name }}</li>
+        <li>Description: {{ i.description }}</li>
+        <li>Author: {{ i.author }}</li>
+        
+    </ul>
+</div>
+{% empty %}
+NO DATA
+{% endfor %}
+
+<h5>POST A BOOK</h5>
+<form method="post" action=""> {% csrf_token %}
+    <input type="text" name="name" placeholder="name"> 
+    <input type="text" name="author" placeholder="author"> 
+    <input type="file" name="image"> 
+    <textarea name="description"></textarea>
+    
+</form>

@@ -1,7 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'style.css' %}">
 <h1>LIST OF BOOKS</h1>
-<p>This is a docker compose project with nginx</p>
 {% for i in qs %}
 <div>
     <ul>
@@ -17,10 +16,10 @@ NO DATA
 {% endfor %}
 
 <h5>POST A BOOK</h5>
-<form method="post" action=""> {% csrf_token %}
-    <input type="text" name="name" placeholder="name"> 
-    <input type="text" name="author" placeholder="author"> 
-    <input type="file" name="image"> 
-    <textarea name="description"></textarea>
-    
+<form method="post" action="" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="text" name="name" placeholder="name">  <br>
+    <input type="text" name="author" placeholder="author"> <br>
+    <input type="file" name="image"> <br>
+    <textarea placeholder="description" name="description"></textarea><br>
+    <input type="submit" value="submit">
 </form>

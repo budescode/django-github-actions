@@ -2,7 +2,7 @@ FROM nginx:latest
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy the .env file into the container
-COPY /code/.env /etc/nginx/conf.d/.env
+COPY ../.env /etc/nginx/conf.d/.env
 
 # Set environment variable based on the values in the .env file
 RUN export CERTBOT_DOMAIN=$(cat /etc/nginx/conf.d/.env | grep CERTBOT_DOMAIN | cut -d '=' -f 2)

@@ -21,6 +21,8 @@ jobs:
           envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           envkey_CERTBOT_EMAIL: ${{ secrets.CERTBOT_EMAIL }}
           envkey_CERTBOT_DOMAIN: ${{ secrets.CERTBOT_DOMAIN }}
+          envkey_DEBUG: ${{ secrets.DEBUG }}
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
           file_name: .env
           fail_on_empty: false

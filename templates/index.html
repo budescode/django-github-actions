@@ -4,7 +4,7 @@
 {% for i in qs %}
 <div>
     <ul>
-        <img src="{{ i.image.url }}">
+        <img src="{{ i.image.url }}" width="100" height="100">
         <li>Name: {{ i.name }}</li>
         <li>Description: {{ i.description }}</li>
         <li>Author: {{ i.author }}</li>
@@ -17,9 +17,9 @@ NO DATA
 
 <h5>POST A BOOK</h5>
 <form method="post" action="" enctype="multipart/form-data"> {% csrf_token %}
-    <input type="text" name="name" placeholder="name">  <br>
-    <input type="text" name="author" placeholder="author"> <br>
-    <input type="file" name="image"> <br>
-    <textarea placeholder="description" name="description"></textarea><br>
+    <input type="text" name="name" placeholder="name" required>  <br>
+    <input type="text" name="author" placeholder="author" required> <br>
+    <input type="file" name="image" required> <br>
+    <textarea placeholder="description" name="description" required></textarea><br>
     <input type="submit" value="submit">
 </form>
